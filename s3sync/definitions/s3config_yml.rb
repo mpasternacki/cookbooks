@@ -6,7 +6,7 @@ define :s3config_yml,
        :s3sync_waitonerror => nil, :s3sync_native_charset => nil,
        :group => "root", :owner => "root", :mode => "0600" do
   template params[:name] do
-    source "s3config.yml"
+    source "s3config.yml.erb"
     cookbook "s3sync"
     group params[:group]
     owner params[:owner]
