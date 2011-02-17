@@ -1,0 +1,10 @@
+= DESCRIPTION:
+
+Installs s3sync utility
+
+= REQUIREMENTS:
+
+= ATTRIBUTES:
+
+= USAGE:
+
