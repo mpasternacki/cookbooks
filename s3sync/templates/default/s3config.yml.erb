@@ -1,0 +1,30 @@
+<% if @aws_access_key_id -%>
+aws_access_key_id: <%= @aws_access_key_id %>
+<% end -%>
+<% if @aws_secret_access_key -%>
+aws_secret_access_key: <%= @aws_secret_access_key %>
+<% end -%>
+<% if @aws_calling_format -%>
+aws_calling_format: <%= @aws_calling_format %>
+<% end -%>
+ssl_cert_dir: /etc/ssl/certs
+<% if @http_proxy_host -%>
+http_proxy_host: <%= @http_proxy_host %>
+<% end -%>
+<% if @http_proxy_port -%>
+http_proxy_port: <%= @http_proxy_port %>
+<% end -%>
+<% if @http_proxy_user -%>
+http_proxy_user: <%= @http_proxy_user %>
+<% end -%>
+<% if @http_proxy_password -%>
+http_proxy_password: <%= @http_proxy_password %>
+<% end -%>
+<% if @s3sync_retries -%>
+s3sync_retries: <%= @s3sync_retries %>
+<% end -%>
+<% if @s3sync_waitonerror -%>
+s3sync_waitonerror: <%= @s3sync_waitonerror %>
+<% end -%>
+s3sync_mime_types_file: /etc/mime.types
+s3sync_native_charset: <%= @s3sync_native_charset || 'UTF-8' %>

@@ -1,0 +1,14 @@
+= DESCRIPTION:
+
+Installs Xvfb X server and runs it on specified port in init-time.
+
+= REQUIREMENTS:
+
+Debian. Possibly also Ubuntu.
+
+= ATTRIBUTES:
+
+xvfb.display (default 99) - DISPLAY of Xvfb server
+
+= USAGE:
+
