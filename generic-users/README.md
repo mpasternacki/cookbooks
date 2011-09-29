@@ -11,6 +11,8 @@ This cookbook is partially based on Opscode's `users` cookbook and
 Requirements
 ============
 
+No other cookbook is required.
+
 Attributes
 ==========
 
@@ -64,5 +66,55 @@ Keys recognized:
 * `id` -- group name
 * `gid` (optional) -- force numeric group id
 * `shell` -- whether to create a shell group (boolean, defaults to true).
+* `user_attributes` -- dictionary of attributes that will be applied
+  to group members. Adding other groups by
+  `group["user_attributes"]["groups"]` won't work; if group
+  inheritance is needed, some other way will be provided.
 
 Arbitrary other keys may be used by other cookbooks.
+
+The GenericUsers::User class
+----------------------------
+
+A library class is provided to encapsulate common logic and move it
+out of cookbooks. This logic concerns mostly user attribute defaults
+provided in groups' `user_attributes` dictionary. To get new `User`
+instances, following methods are provided:
+
+* `GenericUsers::User.new(item)` -- takes a data bag item from
+  `:users` data bag for initialization
+* `GenericUsers::User.get(id)` -- fetches a `:users` data bag item,
+  returns `User` instance
+* `GenericUsers::User.find(query)` -- searches for `:user` data bag
+  items by Chef search query, returns array of `User` instances
+
+Attributes of original data bag items are processed for convenience:
+
+* `:groups` attribute is a list even if data bag item's attribute is a
+  bare string
+* `:username` attribute, if not provided, is initialized to be equal
+  to `:id`
+
+Dictionary access on User instance return user's direct attribute if
+it exists. Otherwise, user's groups are iterated to find one, whose
+`:user_attributes` dictionary defines such attribute. First found
+value is used.
+
+To use all defined values (directly from user item and from all groups
+that define the value), `get_all` method is used. When called only
+with parameter name, it return an array of arrays: each array in the
+list is a list of attribute values. If provided with a block that
+takes two parameters, this block is used together with `inject` method
+to flatten the list; use `&:+` to concatenate the list and `&:|` to
+get a list of unique values. An example to clarify:
+
+    user.get_all(:foo) => [[1], [2, 3], [1, 2, 4]]
+    user.get_all(:foo, &:+) => [1, 2, 3, 1, 2, 4]
+    user.get_all(:foo, &:|) => [1, 2, 3, 4]
+
+Convenience methods
+-------------------
+
+* `GenericUsers::get_group(group_id)` -- returns data bag item or
+  "imaginary group" Mash (containing two attributes: `:id`, and
+  `:imaginary => true`) if group is not found.

@@ -1,0 +1,870 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: GenericUsers::User
+  
+    &mdash; Documentation by YARD 0.7.2
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (U)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../GenericUsers.html" title="GenericUsers (class)">GenericUsers</a></span></span>
+     &raquo; 
+    <span class="title">User</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: GenericUsers::User
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">GenericUsers::User</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">libraries/user.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Class representing a user of the system
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#data-instance_method" title="#data (instance method)">- (Mash) <strong>data</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Raw user data bag item contents.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get-class_method" title="get (class method)">+ (Object) <strong>get</strong>(user_id) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Get user by ID.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#search-class_method" title="search (class method)">+ (Object) <strong>search</strong>(q) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Get array of users by Chef search query on <tt>:users</tt> data bag.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#%5B%5D-instance_method" title="#[] (instance method)">- (Object) <strong>[]</strong>(attr) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Get value of user&#8217;s attribute.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_all-instance_method" title="#get_all (instance method)">- (Object) <strong>get_all</strong>(attr) {|a, b| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Get all values for an attribute.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#groups-instance_method" title="#groups (instance method)">- (Array(Mash)) <strong>groups</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+All of user&#8217;s groups.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (User) <strong>initialize</strong>(_item) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A new instance of User.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#inspect-instance_method" title="#inspect (instance method)">- (Object) <strong>inspect</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Pretty-print without too much screen noise.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="GenericUsers::User (class)">User</a></span></tt>) <strong>initialize</strong>(_item) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of User
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>_item</span>
+      
+      
+        <span class='type'>(<tt>Data Bag Item</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+Data bag item of a user
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41
+42
+43
+44
+45</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'libraries/user.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id _item'>_item</span><span class='rparen'>)</span>
+  <span class='ivar'>@item</span> <span class='op'>=</span> <span class='id _item'>_item</span>
+  <span class='ivar'>@data</span> <span class='op'>=</span> <span class='const'>Mash</span><span class='op'>::</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id _item'>_item</span><span class='period'>.</span><span class='id to_hash'>to_hash</span><span class='rparen'>)</span>
+
+  <span class='id data'>data</span><span class='lbracket'>[</span><span class='symbol'>:username</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='id data'>data</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
+  <span class='id data'>data</span><span class='lbracket'>[</span><span class='symbol'>:groups</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id _ensure_array'>_ensure_array</span><span class='lparen'>(</span><span class='id data'>data</span><span class='lbracket'>[</span><span class='symbol'>:groups</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <span id="data-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="data-instance_method">
+  
+    - (<tt>Mash</tt>) <strong>data</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Raw user data bag item contents
+</p>
+<dl>
+<dt><tt>:username</tt></dt><dd><p>
+defaults to <tt>:id</tt> if not found in original data.
+</p>
+</dd>
+<dt><tt>:groups</tt></dt><dd><p>
+is made sure to be an array
+</p>
+</dd>
+</dl>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Mash</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+36
+37
+38</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'libraries/user.rb', line 36</span>
+
+<span class='kw'>def</span> <span class='id data'>data</span>
+  <span class='ivar'>@data</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="get-class_method">
+  
+    + (<tt>Object</tt>) <strong>get</strong>(user_id) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Get user by ID
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+103
+104
+105</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'libraries/user.rb', line 103</span>
+
+<span class='kw'>def</span> <span class='id get'>get</span><span class='lparen'>(</span><span class='id user_id'>user_id</span><span class='rparen'>)</span>
+  <span class='const'>User</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id data_bag_item'>data_bag_item</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>users</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id user_id'>user_id</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="search-class_method">
+  
+    + (<tt>Object</tt>) <strong>search</strong>(q) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Get array of users by Chef search query on <tt>:users</tt> data bag
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+108
+109
+110
+111
+112
+113
+114</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'libraries/user.rb', line 108</span>
+
+<span class='kw'>def</span> <span class='id search'>search</span><span class='lparen'>(</span><span class='id q'>q</span><span class='rparen'>)</span>
+  <span class='id rv'>rv</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='const'>Chef</span><span class='op'>::</span><span class='const'>Search</span><span class='op'>::</span><span class='const'>Query</span><span class='period'>.</span><span class='id new'>new</span><span class='period'>.</span><span class='id search'>search</span><span class='lparen'>(</span><span class='symbol'>:users</span><span class='comma'>,</span> <span class='id q'>q</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id u'>u</span><span class='op'>|</span>
+    <span class='id rv'>rv</span> <span class='op'>&lt;&lt;</span> <span class='const'>User</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id u'>u</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='kw'>return</span> <span class='id rv'>rv</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="[]-instance_method">
+  
+    - (<tt>Object</tt>) <strong>[]</strong>(attr) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Get value of user&#8217;s attribute
+</p>
+<p>
+If user&#8217;s data bag contains <tt>attr</tt> key, its value is returned.
+Otherwise, user&#8217;s groups are iterated to find one, whose
+<tt>:user_attributes</tt> dictionary contains <tt>attr</tt>. If no such
+group is found, <tt>nil</tt> is returned.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'><p>
+user&#8217;s attribute or attribute defined in one of user&#8217;s groups
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'libraries/user.rb', line 55</span>
+
+<span class='kw'>def</span> <span class='op'>[]</span><span class='lparen'>(</span><span class='id attr'>attr</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id data'>data</span><span class='lbracket'>[</span><span class='id attr'>attr</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id data'>data</span><span class='period'>.</span><span class='id include?'>include?</span><span class='lparen'>(</span><span class='id attr'>attr</span><span class='rparen'>)</span>
+
+  <span class='comment'># fall back to group-defined attributes
+</span>  <span class='kw'>self</span><span class='period'>.</span><span class='id groups'>groups</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id g'>g</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id g'>g</span><span class='period'>.</span><span class='id include?'>include?</span><span class='lparen'>(</span><span class='symbol'>:user_attributes</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='id g'>g</span><span class='lbracket'>[</span><span class='symbol'>:user_attributes</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id include?'>include?</span><span class='lparen'>(</span><span class='id attr'>attr</span><span class='rparen'>)</span>
+      <span class='kw'>return</span> <span class='id g'>g</span><span class='lbracket'>[</span><span class='symbol'>:user_attributes</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id attr'>attr</span><span class='rbracket'>]</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_all-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_all</strong>(attr) {|a, b| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Get all values for an attribute
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">user.get_all(:foo) =&gt; [[1], [2, 3], [1, 2, 4]]
+user.get_all(:foo, &amp;:+) =&gt; [1, 2, 3, 1, 2, 4]
+user.get_all(:foo, &amp;:|) =&gt; [1, 2, 3, 4]</pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>attr</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+Attribute name
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>a</tt>, <tt>b</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+Function used to flatten the list e.g. <tt>&amp;:+</tt> to concatenate
+list, or <tt>&amp;:|</tt> to get flat list of all values without
+repetitions
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'libraries/user.rb', line 78</span>
+
+<span class='kw'>def</span> <span class='id get_all'>get_all</span><span class='lparen'>(</span><span class='id attr'>attr</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id rv'>rv</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='id rv'>rv</span> <span class='op'>&lt;&lt;</span> <span class='id _ensure_array'>_ensure_array</span><span class='lparen'>(</span><span class='id data'>data</span><span class='lbracket'>[</span><span class='id attr'>attr</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id data'>data</span><span class='period'>.</span><span class='id include?'>include?</span><span class='lparen'>(</span><span class='id attr'>attr</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id groups'>groups</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id g'>g</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id g'>g</span><span class='period'>.</span><span class='id include?'>include?</span><span class='lparen'>(</span><span class='symbol'>:user_attributes</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='id g'>g</span><span class='lbracket'>[</span><span class='symbol'>:user_attributes</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id include?'>include?</span><span class='lparen'>(</span><span class='id attr'>attr</span><span class='rparen'>)</span>
+      <span class='id rv'>rv</span> <span class='op'>&lt;&lt;</span> <span class='id _ensure_array'>_ensure_array</span><span class='lparen'>(</span><span class='id g'>g</span><span class='lbracket'>[</span><span class='symbol'>:user_attributes</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id attr'>attr</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='id rv'>rv</span> <span class='op'>=</span> <span class='id rv'>rv</span><span class='period'>.</span><span class='id inject'>inject</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id block_given?'>block_given?</span>
+  <span class='id rv'>rv</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="groups-instance_method">
+  
+    - (<tt>Array(Mash)</tt>) <strong>groups</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+All of user&#8217;s groups
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array(Mash)</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+Array of groups
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+97
+98
+99</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'libraries/user.rb', line 97</span>
+
+<span class='kw'>def</span> <span class='id groups'>groups</span>
+  <span class='ivar'>@groups</span> <span class='op'>||=</span> <span class='id data'>data</span><span class='lbracket'>[</span><span class='symbol'>:groups</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id g'>g</span><span class='op'>|</span> <span class='const'>GenericUsers</span><span class='op'>::</span><span class='id get_group'>get_group</span><span class='lparen'>(</span><span class='id g'>g</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="inspect-instance_method">
+  
+    - (<tt>Object</tt>) <strong>inspect</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Pretty-print without too much screen noise
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+91
+92
+93</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'libraries/user.rb', line 91</span>
+
+<span class='kw'>def</span> <span class='id inspect'>inspect</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id item_id'>item_id</span><span class='rbrace'>}</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Thu Sep 29 17:17:44 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.2 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

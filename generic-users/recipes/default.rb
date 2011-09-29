@@ -31,29 +31,18 @@ log "Active groups: #{active_groups.join(', ')}" do
   level :info
 end
 
-GROUPS_IN_DATA_BAG = data_bag('groups')
-GROUPS = {}
-def get_group(group_name)
-  GROUPS[group_name] ||= (
-    GROUPS_IN_DATA_BAG.include?(group_name) ?
-    data_bag_item('groups', group_name) :
-    { 'id' => group_name } )
-end
-
 groups_q = active_groups.map{|g| "groups:#{g}"}.join(' OR ')
-active_users = search(:users, "( #{groups_q} ) AND -shell:false")
+active_users = GenericUsers::User::search("( #{groups_q} ) AND -shell:false")
 
 managed_groups = Hash[
   active_users.
-  inject([]) { |r, u| r|u['groups'].to_a }. # list of all groups any user belongs to
-  map { |g| get_group(g) }.                 # get group hash
-  map { |g| g['members'] = [] ; [ g['id'], g ] }
+  inject([]) { |r, u| r|u[:groups] }.       # list of all groups any user belongs to
+  map { |g| [ g, [] ] }
 ]
 
 active_users.each do |u|
-  username = u['username'] || u['id']
-  u['groups'].to_a.each do |grp|
-    managed_groups[grp]['members'] << username
+  u.data[:groups].each do |grp|
+    managed_groups[grp] << u[:username]
   end
 
   # OpenID access is only for supergroup
@@ -65,7 +54,7 @@ active_users.each do |u|
     end
   end
 
-  home_dir = "/home/#{username}"
+  home_dir = "/home/#{u[:username]}"
 
   # fixes CHEF-1699
   ruby_block "reset group list" do
@@ -75,11 +64,11 @@ active_users.each do |u|
     action :nothing
   end
 
-  user username do
-    uid u['uid']
-    gid u['gid']
-    shell u['shell'] == true ? nil : u['shell']
-    comment u['comment']
+  user u[:username] do
+    uid u[:uid]
+    gid u[:gid]
+    shell u[:shell] == true ? nil : u[:shell]
+    comment u[:comment]
     supports :manage_home => true
     home home_dir
     notifies :create, "ruby_block[reset group list]", :immediately
@@ -100,12 +89,13 @@ active_users.each do |u|
   end
 end
 
-managed_groups.each_value do |grp|
+managed_groups.each_pair do |grp_id, grp_members|
+  grp = GenericUsers::get_group(grp_id)
   if grp['shell'] != false
     group grp['id'] do
       name grp['id']
       gid grp['gid']
-      members grp['members']
+      members grp_members
     end
   end
 end

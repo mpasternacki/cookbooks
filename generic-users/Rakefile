@@ -1,0 +1,13 @@
+# -*- ruby -*-
+
+task :doc do
+  sh "bundle exec yard doc libraries/user.rb"
+end
+
+task :servedoc do
+  sh "bundle exec yard server --reload"
+end
+
+task :test do
+  sh "bundle exec rspec -c -f d spec.rb"
+end

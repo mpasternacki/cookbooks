@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.7.2
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'><h1>Description</h1>
+
+<p>This cookbook manages user accounts, attributes, and permissions in a
+generic, data-driven way. It is a drop-in replacement for Opscode's or
+37signals' <code>users</code> cookbook, but it is more flexible.</p>
+
+<p>This cookbook is partially based on Opscode's <code>users</code> cookbook and
+<code>users::sysadmins</code> recipe.</p>
+
+<h1>Requirements</h1>
+
+<h1>Attributes</h1>
+
+<ul>
+<li><code>users.supergroup</code> -- group that is active on all machines, and has
+superuser rights. Default: <code>sysadmin</code>. Don't change the default to
+be compatible with Opscode's cookbooks</li>
+<li><p><code>users.active_groups</code> -- names of groups to create shell accounts
+for on the machine.</p>
+
+<p><code>users.supergroup</code>, if defined, will be added to this list.</p>
+
+<p>If this attribute is not defined, <code>active_groups</code> attribute will be
+tried for compatibility with 37signals' cookbook.</p>
+
+<p>Groups in this list will be created as shell groups and users will
+be added to them, unless <code>groups</code> data bag item for the group exists
+and has <code>shell</code> parameter set to <code>false</code>.</p></li>
+</ul>
+
+
+<h1>Usage</h1>
+
+<p>Two data bags need to be created: <code>users</code> and <code>groups</code>. Second one can
+be empty.</p>
+
+<h2>The users data bag</h2>
+
+<p>Keys recognized:</p>
+
+<ul>
+<li><code>id</code> -- ID of data bag item, default username</li>
+<li><code>username</code> -- username if different from <code>id</code>; it should be used for
+username policies requiring characters illegal in IDs (e.g. dots)</li>
+<li><code>groups</code> -- list of groups user belongs to</li>
+<li><code>comment</code> (optional) -- usually user's real name</li>
+<li><code>shell</code> -- whether this is a shell account. Can be true (default),
+false, or a string value. If true or unset, use default shell</li>
+<li><code>ssh_keys</code> or <code>ssh_key</code> (optional) -- a string or list of strings
+containing public SSH keys of the user</li>
+<li><code>openid</code> (optional) -- OpenID URL of the user, added for supergroup
+members to Apache's mod_auth_openid config</li>
+<li><code>gid</code> (optional) -- force user's primary group (name or numeric)</li>
+<li><code>uid</code> (optional) -- force user's numeric id</li>
+</ul>
+
+
+<p>Arbitrary other keys may be used by other cookbooks.</p>
+
+<h2>The groups data bag</h2>
+
+<p>Keys recognized:</p>
+
+<ul>
+<li><code>id</code> -- group name</li>
+<li><code>gid</code> (optional) -- force numeric group id</li>
+<li><code>shell</code> -- whether to create a shell group (boolean, defaults to true).</li>
+</ul>
+
+
+<p>Arbitrary other keys may be used by other cookbooks.</p>
+</div></div>
+    
+    <div id="footer">
+  Generated on Thu Sep 29 17:17:44 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.2 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>
