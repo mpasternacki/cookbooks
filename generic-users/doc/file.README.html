@@ -63,7 +63,15 @@ generic, data-driven way. It is a drop-in replacement for Opscode's or
 <p>This cookbook is partially based on Opscode's <code>users</code> cookbook and
 <code>users::sysadmins</code> recipe.</p>
 
+<p>This cookbook also provides a library part that can be used to
+centrally configure users of your system in a consistent, data-driven
+way. You can use the library part even when still using old opscode's
+or 37signals' cookbook to actually create shell accounts. See "usage"
+section for details.</p>
+
 <h1>Requirements</h1>
+
+<p>No other cookbook is required.</p>
 
 <h1>Attributes</h1>
 
@@ -121,14 +129,79 @@ members to Apache's mod_auth_openid config</li>
 <li><code>id</code> -- group name</li>
 <li><code>gid</code> (optional) -- force numeric group id</li>
 <li><code>shell</code> -- whether to create a shell group (boolean, defaults to true).</li>
+<li><code>user_attributes</code> -- dictionary of attributes that will be applied
+to group members. Adding other groups by
+<code>group["user_attributes"]["groups"]</code> won't work; if group
+inheritance is needed, some other way will be provided.</li>
 </ul>
 
 
 <p>Arbitrary other keys may be used by other cookbooks.</p>
+
+<h2>The GenericUsers::User class</h2>
+
+<p>A library class is provided to encapsulate common logic and move it
+out of cookbooks. This logic concerns mostly user attribute defaults
+provided in groups' <code>user_attributes</code> dictionary. To get new <code>User</code>
+instances, following methods are provided:</p>
+
+<ul>
+<li><code>GenericUsers::User.new(item)</code> -- takes a data bag item from
+<code>:users</code> data bag for initialization</li>
+<li><code>GenericUsers::User.get(id)</code> -- fetches a <code>:users</code> data bag item,
+returns <code>User</code> instance</li>
+<li><code>GenericUsers::User.find(query)</code> -- searches for <code>:user</code> data bag
+items by Chef search query, returns array of <code>User</code> instances</li>
+</ul>
+
+
+<p>Attributes of original data bag items are processed for convenience:</p>
+
+<ul>
+<li><code>:groups</code> attribute is a list even if data bag item's attribute is a
+bare string</li>
+<li><code>:username</code> attribute, if not provided, is initialized to be equal
+to <code>:id</code></li>
+</ul>
+
+
+<p>Dictionary access on User instance return user's direct attribute if
+it exists. Otherwise, user's groups are iterated to find one, whose
+<code>:user_attributes</code> dictionary defines such attribute. First found
+value is used.</p>
+
+<p>To use all defined values (directly from user item and from all groups
+that define the value), <code>get_all</code> method is used. When called only
+with parameter name, it return an array of arrays: each array in the
+list is a list of attribute values. If provided with a block that
+takes two parameters, this block is used together with <code>inject</code> method
+to flatten the list; use <code>&amp;:+</code> to concatenate the list and <code>&amp;:|</code> to
+get a list of unique values. An example to clarify:</p>
+
+<pre class="code">user.get_all(:foo) =&gt; [[1], [2, 3], [1, 2, 4]]
+user.get_all(:foo, &amp;:+) =&gt; [1, 2, 3, 1, 2, 4]
+user.get_all(:foo, &amp;:|) =&gt; [1, 2, 3, 4]
+</pre>
+
+<h2>Convenience methods</h2>
+
+<ul>
+<li><code>GenericUsers::get_group(group_id)</code> -- returns data bag item or
+"imaginary group" Mash (containing two attributes: <code>:id</code>, and
+<code>:imaginary =&gt; true</code>) if group is not found.</li>
+</ul>
+
+
+<h1>Tests and docs</h1>
+
+<p>Libraary part has an RSpec test suite provided in the <code>spec.rb</code> file,
+and yardoc generated documentation in <code>doc</code> subdirectory. Run <code>bundle</code>
+to get all needed software, <code>rake test</code> to test the library part, and
+<code>rake doc</code> to regenerate documentation.</p>
 </div></div>
     
     <div id="footer">
-  Generated on Thu Sep 29 17:17:44 2011 by 
+  Generated on Fri Sep 30 19:24:14 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.2 (ruby-1.9.2).
 </div>

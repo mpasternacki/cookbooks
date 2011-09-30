@@ -8,6 +8,12 @@ generic, data-driven way. It is a drop-in replacement for Opscode's or
 This cookbook is partially based on Opscode's `users` cookbook and
 `users::sysadmins` recipe.
 
+This cookbook also provides a library part that can be used to
+centrally configure users of your system in a consistent, data-driven
+way. You can use the library part even when still using old opscode's
+or 37signals' cookbook to actually create shell accounts. See "usage"
+section for details.
+
 Requirements
 ============
 
@@ -118,3 +124,11 @@ Convenience methods
 * `GenericUsers::get_group(group_id)` -- returns data bag item or
   "imaginary group" Mash (containing two attributes: `:id`, and
   `:imaginary => true`) if group is not found.
+
+Tests and docs
+==============
+
+Libraary part has an RSpec test suite provided in the `spec.rb` file,
+and yardoc generated documentation in `doc` subdirectory. Run `bundle`
+to get all needed software, `rake test` to test the library part, and
+`rake doc` to regenerate documentation.
