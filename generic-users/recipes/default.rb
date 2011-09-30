@@ -75,15 +75,15 @@ active_users.each do |u|
   end
 
   directory "#{home_dir}/.ssh" do
-    owner u['id']
-    group u['gid'] || u['id']
+    owner u[:username]
+    group u[:gid] || u[:username]
     mode "0700"
   end
 
   template "#{home_dir}/.ssh/authorized_keys" do
     source "authorized_keys.erb"
-    owner u['id']
-    group u['gid'] || u['id']
+    owner u[:username]
+    group u[:gid] || u[:username]
     mode "0600"
     variables :ssh_keys => (u['ssh_keys'].to_a | u['ssh_key'].to_a).join("\n")
   end
