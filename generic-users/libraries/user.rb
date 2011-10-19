@@ -70,7 +70,7 @@ class GenericUsers
     # @yield [a, b] Function used to flatten the list
     #               e.g. <tt>&:+</tt> to concatenate list, or <tt>&:|</tt>
     #               to get flat list of all values without repetitions
-    # @returns [Array] Array of attributes
+    # @return [Array] Array of attributes
     # @example
     #    user.get_all(:foo) => [[1], [2, 3], [1, 2, 4]]
     #    user.get_all(:foo, &:+) => [1, 2, 3, 1, 2, 4]
