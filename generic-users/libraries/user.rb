@@ -126,14 +126,25 @@ class GenericUsers
 
   class << self
     include Chef::Mixin::Language
+
+    # Get group
+    # 
+    # @param [String] group_id Name of group
+    # @return [Mash] Mash containing group attributes; if
+    # specified group does not exist, a Mash containing group id and
+    # +:imaginary => true+ entry.
     def get_group(group_id)
       @@db_groups ||= data_bag('groups')
       @@groups ||= {}
-      @@groups[group_id] ||= if @@db_groups.include?(group_id)
-                             then data_bag_item("groups", group_id)
-                             else Mash::new(:id => group_id,
-                                            :imaginary => true)
-                             end
+      @@groups[group_id] ||= Mash::new(
+        if @@db_groups.include?(group_id)
+        then data_bag_item("groups", group_id).to_hash
+        else {
+            :id => group_id,
+            :imaginary => true
+          }
+        end
+        )
     end
   end
 end
