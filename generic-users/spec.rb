@@ -30,6 +30,13 @@ describe GenericUsers::User do
     end
   end
 
+  describe "#inspect" do
+    it "returns sensible value" do
+      u = GenericUsers::User.new({ "id" => "test", "groups" => "bar" })
+      u.inspect.should =~ /^\#<GenericUsers::User:0x[0-9a-f]+ test>/
+    end
+  end
+
   describe "#[]" do
     it "maps to @data" do
       [ GenericUsers::User.new({ "id" => "test", "foo" => "bar", "baz" => "quux" }),

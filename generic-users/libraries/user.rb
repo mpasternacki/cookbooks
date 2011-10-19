@@ -89,7 +89,7 @@ class GenericUsers
 
     # Pretty-print without too much screen noise
     def inspect
-      self.to_s.sub('>', " #{self.item_id}>")
+      self.to_s.sub('>', " #{data[:id]}>")
     end
 
     # All of user's groups
