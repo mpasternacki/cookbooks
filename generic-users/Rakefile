@@ -11,3 +11,7 @@ end
 task :test do
   sh "bundle exec rspec -c -f d spec.rb"
 end
+
+task :share do
+  sh "cd .. ; knife cookbook site share generic-users other"
+end
