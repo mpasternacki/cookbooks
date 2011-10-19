@@ -124,7 +124,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_group-class_method" title="get_group (class method)">+ (Object) <strong>get_group</strong>(group_id) </a>
+      <a href="#get_group-class_method" title="get_group (class method)">+ (Mash) <strong>get_group</strong>(group_id) </a>
     
 
     
@@ -137,7 +137,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Get group.
+</p>
+</div></span>
   
 </li>
 
@@ -155,37 +158,100 @@
       <div class="method_details first">
   <p class="signature first" id="get_group-class_method">
   
-    + (<tt>Object</tt>) <strong>get_group</strong>(group_id) 
+    + (<tt>Mash</tt>) <strong>get_group</strong>(group_id) 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Get group
+</p>
+<p>
+specified group does not exist, a Mash containing group id and +:imaginary
+=> true+ entry.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>group_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+Name of group
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Mash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+Mash containing group attributes; if
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-129
-130
-131
-132
-133
-134
-135
 136
-137</pre>
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'libraries/user.rb', line 129</span>
+      <pre class="code"><span class="info file"># File 'libraries/user.rb', line 136</span>
 
 <span class='kw'>def</span> <span class='id get_group'>get_group</span><span class='lparen'>(</span><span class='id group_id'>group_id</span><span class='rparen'>)</span>
   <span class='cvar'>@@db_groups</span> <span class='op'>||=</span> <span class='id data_bag'>data_bag</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>groups</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
   <span class='cvar'>@@groups</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
-  <span class='cvar'>@@groups</span><span class='lbracket'>[</span><span class='id group_id'>group_id</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='kw'>if</span> <span class='cvar'>@@db_groups</span><span class='period'>.</span><span class='id include?'>include?</span><span class='lparen'>(</span><span class='id group_id'>group_id</span><span class='rparen'>)</span>
-                         <span class='kw'>then</span> <span class='id data_bag_item'>data_bag_item</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>groups</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id group_id'>group_id</span><span class='rparen'>)</span>
-                         <span class='kw'>else</span> <span class='const'>Mash</span><span class='op'>::</span><span class='id new'>new</span><span class='lparen'>(</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='id group_id'>group_id</span><span class='comma'>,</span>
-                                        <span class='symbol'>:imaginary</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='rparen'>)</span>
-                         <span class='kw'>end</span>
+  <span class='cvar'>@@groups</span><span class='lbracket'>[</span><span class='id group_id'>group_id</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='const'>Mash</span><span class='op'>::</span><span class='id new'>new</span><span class='lparen'>(</span>
+    <span class='kw'>if</span> <span class='cvar'>@@db_groups</span><span class='period'>.</span><span class='id include?'>include?</span><span class='lparen'>(</span><span class='id group_id'>group_id</span><span class='rparen'>)</span>
+    <span class='kw'>then</span> <span class='id data_bag_item'>data_bag_item</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>groups</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id group_id'>group_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id to_hash'>to_hash</span>
+    <span class='kw'>else</span> <span class='lbrace'>{</span>
+        <span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='id group_id'>group_id</span><span class='comma'>,</span>
+        <span class='symbol'>:imaginary</span> <span class='op'>=&gt;</span> <span class='kw'>true</span>
+      <span class='rbrace'>}</span>
+    <span class='kw'>end</span>
+    <span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -197,7 +263,7 @@
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 30 19:24:14 2011 by 
+  Generated on Wed Oct 19 13:58:32 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.2 (ruby-1.9.2).
 </div>
