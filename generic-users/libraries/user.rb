@@ -99,6 +99,8 @@ class GenericUsers
     end
 
     class << self
+      include Chef::Mixin::Language
+
       # Get user by ID
       def get(user_id)
         User.new(data_bag_item("users", user_id))
