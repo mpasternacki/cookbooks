@@ -25,7 +25,7 @@
 #
 
 active_groups =
-  (node[:users][:active_groups] || node[:active_groups]).to_a | node[:users][:supergroup].to_a
+  Array(node[:users][:active_groups] || node[:active_groups]) | Array(node[:users][:supergroup])
 
 log "Active groups: #{active_groups.join(', ')}" do
   level :info
@@ -85,7 +85,7 @@ active_users.each do |u|
     owner u[:username]
     group u[:gid] || u[:username]
     mode "0600"
-    variables :ssh_keys => (u['ssh_keys'].to_a | u['ssh_key'].to_a).join("\n")
+    variables :ssh_keys => (Array(u['ssh_keys']) | Array(u['ssh_key'])).join("\n")
   end
 end
 
