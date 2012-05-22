@@ -11,3 +11,8 @@ None
 = USAGE:
 
 See recipes/example.rb
+
+= AUTHORS:
+
+* Maciej Pasternacki
+* Dan Crosta
