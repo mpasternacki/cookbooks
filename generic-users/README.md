@@ -36,6 +36,8 @@ Attributes
   Groups in this list will be created as shell groups and users will
   be added to them, unless `groups` data bag item for the group exists
   and has `shell` parameter set to `false`.
+* `users.force_default_group` -- name of group that will be primary
+  group for all users. Default is that a group is created for each user.
 
 Usage
 =====

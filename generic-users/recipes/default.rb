@@ -66,7 +66,7 @@ active_users.each do |u|
 
   user u[:username] do
     uid u[:uid]
-    gid u[:gid]
+    gid node[:users][:force_default_group] || u[:gid]
     shell u[:shell] == true ? nil : u[:shell]
     comment u[:comment]
     supports :manage_home => true
@@ -76,14 +76,14 @@ active_users.each do |u|
 
   directory "#{home_dir}/.ssh" do
     owner u[:username]
-    group u[:gid] || u[:username]
+    group node[:users][:force_default_group] || u[:gid] || u[:username]
     mode "0700"
   end
 
   template "#{home_dir}/.ssh/authorized_keys" do
     source "authorized_keys.erb"
     owner u[:username]
-    group u[:gid] || u[:username]
+    group node[:users][:force_default_group] || u[:gid] || u[:username]
     mode "0600"
     variables :ssh_keys => (Array(u['ssh_keys']) | Array(u['ssh_key'])).join("\n")
   end
