@@ -32,7 +32,8 @@ log "Active groups: #{active_groups.join(', ')}" do
 end
 
 groups_q = active_groups.map{|g| "groups:#{g}"}.join(' OR ')
-active_users = GenericUsers::User::search("( #{groups_q} ) AND -shell:false")
+active_users = GenericUsers::User::user_search("( #{groups_q} ) NOT action:remove NOT shell:false")
+inactive_users = GenericUsers::User::user_search("action:remove")
 
 managed_groups = Hash[
   active_users.
@@ -97,5 +98,18 @@ managed_groups.each_pair do |grp_id, grp_members|
       gid grp['gid']
       members grp_members
     end
+  end
+end
+
+inactive_users.each do |u|
+  # kill any processes owned by the user, otherwise userdel(8) will exit
+  # with error code 8
+  execute "kill_#{u[:username]}_processes" do
+    command "killall -9 -u #{u[:username]} || true"
+    action :run
+  end
+
+  user u[:username] do
+    action :remove
   end
 end

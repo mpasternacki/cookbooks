@@ -107,9 +107,9 @@ class GenericUsers
       end
 
       # Get array of users by Chef search query on +:users+ data bag
-      def search(q)
+      def user_search(q)
         rv = []
-        Chef::Search::Query.new.search(:users, q) do |u|
+        search(:users, q) do |u|
           rv << User.new(u)
         end
         return rv
