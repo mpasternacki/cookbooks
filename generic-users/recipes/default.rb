@@ -40,7 +40,28 @@ managed_groups = Hash[
   map { |g| [ g, [] ] }
 ]
 
+# fixes CHEF-1699
+ruby_block "reset group list" do
+  block do
+    Etc.endgrent
+  end
+  action :nothing
+end
+
 active_users.each do |u|
+  home_dir = "/home/#{u[:username]}"
+
+  if u['removed']
+    user u[:username] do
+      action :remove
+      supports :manage_home => true
+      home home_dir
+      notifies :create, "ruby_block[reset group list]", :immediately
+    end
+
+    next
+  end
+
   u.data[:groups].each do |grp|
     managed_groups[grp] << u[:username]
   end
@@ -52,16 +73,6 @@ active_users.each do |u|
     Array(u['openid']).compact.each do |oid|
       node[:apache][:allowed_openids] << oid unless node[:apache][:allowed_openids].include?(oid)
     end
-  end
-
-  home_dir = "/home/#{u[:username]}"
-
-  # fixes CHEF-1699
-  ruby_block "reset group list" do
-    block do
-      Etc.endgrent
-    end
-    action :nothing
   end
 
   user u[:username] do

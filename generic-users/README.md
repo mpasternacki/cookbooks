@@ -63,6 +63,9 @@ Keys recognized:
   members to Apache's mod\_auth\_openid config
 * `gid` (optional) -- force user's primary group (name or numeric)
 * `uid` (optional) -- force user's numeric id
+* `removed` -- if set to true value, user's account is **removed** if
+  it exists. Set this key to revoke access instead of just deleting
+  the data bag item -- the recipe won't touch unknown accounts.
 
 Arbitrary other keys may be used by other cookbooks.
 
