@@ -71,7 +71,7 @@ active_users.each do |u|
       node[:apache][:allowed_openids] and
       u['groups'].include?(node[:users][:supergroup])
     Array(u['openid']).compact.each do |oid|
-      node[:apache][:allowed_openids] << oid unless node[:apache][:allowed_openids].include?(oid)
+      node.set[:apache][:allowed_openids] = (node.set[:apache][:allowed_openids] || []) << oid unless node[:apache][:allowed_openids].include?(oid)
     end
   end
 
