@@ -48,6 +48,7 @@ ruby_block "reset group list" do
   action :nothing
 end
 
+allowed_openids = []
 active_users.each do |u|
   home_dir = "/home/#{u[:username]}"
 
@@ -66,13 +67,8 @@ active_users.each do |u|
     managed_groups[grp] << u[:username]
   end
 
-  # OpenID access is only for supergroup
-  if node[:apache] and
-      node[:apache][:allowed_openids] and
-      u['groups'].include?(node[:users][:supergroup])
-    Array(u['openid']).compact.each do |oid|
-      node.set[:apache][:allowed_openids] = (node.set[:apache][:allowed_openids] || []) << oid unless node[:apache][:allowed_openids].include?(oid)
-    end
+  if u['groups'].include?(node[:users][:supergroup])
+    allowed_openids |= Array(u['openid']).compact
   end
 
   user u[:username] do
@@ -98,6 +94,10 @@ active_users.each do |u|
     mode "0600"
     variables :ssh_keys => (Array(u['ssh_keys']) | Array(u['ssh_key'])).join("\n")
   end
+end
+
+if node[:apache] and node[:apache][:allowed_openids]
+  node.set[:apache][:allowed_openids] = Array(node.set[:apache][:allowed_openids]) | allowed_openids
 end
 
 managed_groups.each_pair do |grp_id, grp_members|
