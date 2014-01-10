@@ -1,25 +1,29 @@
+require 'chef/mixin/shell_out'
+
+include Chef::Mixin::ShellOut
+
+def initialize(*args)
+  super
+  @run_context.include_recipe "supervisord"
+end
+
+
 action :supervise do
   template "/etc/supervisor/conf.d/#{new_resource.name}.conf" do
     source "supervised-program.conf.erb"
     cookbook "supervisord"
     owner "root"
     group "root"
-    mode "0644"
+    mode "0600"
     variables :program => new_resource
     notifies :reload, resources("service[supervisor]")
   end
-
-  s = service "supervisord_program_#{new_resource.name}" do
-    start_command "supervisorctl start #{new_resource.name}"
-    stop_command "supervisorctl stop #{new_resource.name}"
-    restart_command "supervisorctl restart #{new_resource.name}"
-    # status_command "supervisorctl status #{new_resource.name}"
-  end
-  new_resource.service(s)
+  new_resource.updated_by_last_action(true)
 end
 
-[:start, :stop, :restart].each do |a|
-  action a do
-    new_resource.service.run_action(a)
+[:start, :stop, :restart].each do |act|
+  action act do
+    shell_out! "supervisorctl #{act} #{new_resource.name}"
+    new_resource.updated_by_last_action(true)
   end
 end
