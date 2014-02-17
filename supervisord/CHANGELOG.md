@@ -1,6 +1,10 @@
 Changes
 =======
 
+1.0.1
+-----
+- Add missing `stopwaitsecs` setting.
+
 1.0.0
 -----
 

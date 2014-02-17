@@ -39,6 +39,7 @@ setting :exitcodes, default: nil do |val|
   end
 end
 setting :stopsignal, equal_to: ["TERM", "HUP", "INT", "QUIT", "KILL", "USR1", "USR2"], default: nil
+setting :stopwaitsecs, kind_of: Integer, default: nil
 setting :user, kind_of: String, default: nil
 setting :stdout_logfile, kind_of: String, default: nil
 setting :stdout_logfile_maxbytes, kind_of: String, default: nil
