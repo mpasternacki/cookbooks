@@ -53,6 +53,7 @@ setting :stderr_logfile_backups, kind_of: Integer, default: nil
 setting :stderr_capture_maxbytes, kind_of: String, default: nil
 setting :stderr_events_enabled, kind_of: [FalseClass, TrueClass], default: nil
 setting :stderr_syslog, kind_of: [FalseClass, TrueClass], default: nil
+setting :redirect_stderr, kind_of: [FalseClass, TrueClass], default: nil
 setting :environment, kind_of: [Hash, Array, String], default: nil do |val|
   case val
   when String then val
