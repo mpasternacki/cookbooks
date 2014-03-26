@@ -32,6 +32,7 @@ stopsignal = QUIT
 stopasgroup = false
 killasgroup = false
 user = nobody
+redirect_stderr = false
 stdout_logfile = /out
 stdout_logfile_maxbytes = 10M
 stdout_logfile_backups = 99

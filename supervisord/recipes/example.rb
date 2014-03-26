@@ -29,6 +29,7 @@ supervisord_program "maximal" do
   stderr_capture_maxbytes '13M'
   stderr_events_enabled true
   stderr_syslog true
+  redirect_stderr false
   environment 'FOO="bar"'
   directory '/'
   umask '022'
