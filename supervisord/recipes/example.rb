@@ -14,6 +14,8 @@ supervisord_program "maximal" do
   startretries 5
   exitcodes '0,6,7'
   stopsignal 'QUIT'
+  stopasgroup false
+  killasgroup false
   user 'nobody'
   stdout_logfile '/out'
   stdout_logfile_maxbytes '10M'
