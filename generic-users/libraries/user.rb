@@ -99,7 +99,12 @@ class GenericUsers
     end
 
     class << self
-      include Chef::Mixin::Language
+      if Chef::VERSION >= '11.0.0'
+        include Chef::DSL::DataQuery
+      else
+        include Chef::Mixin::Language
+      end
+
 
       # Get user by ID
       def get(user_id)
@@ -127,7 +132,11 @@ class GenericUsers
   end
 
   class << self
-    include Chef::Mixin::Language
+    if Chef::VERSION >= '11.0.0'
+      include Chef::DSL::DataQuery
+    else
+      include Chef::Mixin::Language
+    end
 
     # Get group
     # 
